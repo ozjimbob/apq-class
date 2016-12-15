@@ -13,15 +13,16 @@ shinyUI(fluidPage(
   titlePanel("Aerial Photo Class"),
 
   # Sidebar with a slider input for number of bins
-  sidebarLayout(
+  fluidRow(
+  column(width=2,
     sidebarPanel(
       actionButton("refresh",
                   "New Image")
-    ),
-
+    )),
+  column(width=10,
     # Show a plot of the generated distribution
     mainPanel(
-      imageOutput("preImage")
+      imageOutput("preImage",height="800px")
     )
   )
-))
+)))

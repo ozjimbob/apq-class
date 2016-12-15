@@ -38,7 +38,8 @@ shinyServer(function(input, output,session) {
     plot.new()
     plot.window(c(0,1),c(0,1))
     rasterImage(pht,0,0,1,1)
-    
+    rect(0.2,0.2,0.8,0.8,border="red",lwd=2)
+    text(0.5,0.5,"1",col="red")
     dev.off()
     
     # Return a list containing the filename
