@@ -15,14 +15,29 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins
   fluidRow(
   column(width=2,
-    sidebarPanel(
+      radioButtons("vegType","Majority Photo Veg Class",choices=c("Savanna"="Savanna",
+                                                        "Swamp"="Swamp",
+                                                        "Sandstone"="Sandstone",
+                                                        "Water"="Water",
+                                                        "Grass"="Grass")),
+      checkboxGroupInput("trackPresent","Animal Track Present",
+                         choices=c("Box 1"="b1",
+                                   "Box 2"="b2",
+                                   "Box 3"="b3",
+                                   "Box 4"="b4",
+                                   "Box 5"="b5",
+                                   "Box 6"="b6")),
+      leafletOutput("mymap"),
+      
+      
+      
       actionButton("refresh",
-                  "New Image")
-    )),
+                  "Submit")
+    ),
   column(width=10,
     # Show a plot of the generated distribution
     mainPanel(
-      imageOutput("preImage",height="800px")
+      imageOutput("preImage",height="800px",width="1200px")
     )
   )
 )))
