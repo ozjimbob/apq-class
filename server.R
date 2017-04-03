@@ -53,7 +53,9 @@ shinyServer(function(input, output,session) {
                                                                        "Sandstone Heath"="Sandstone Heath",
                                                                        "Sandstone Woodland"="Sandstone Woodland",
                                                                        "Mangrove/Mud"="Mangrove/Mud",
-                                                                       "Water/Bare","Water/Bare"),
+                                                                       "Water/Bare"="Water/Bare",
+                                                                       "Treeless"="Treeless",
+                                                                       "Rocks"="Rocks"),
                       selected = overallVeg)
     updateSelectInput(session,"vegType2","Quadrat Veg Class",choices=c("Euc Open Forest"="Euc Open Forest",
                                                                        "Euc Woodland (Mafic)"="Euc Woodland (Mafic)",
@@ -61,7 +63,9 @@ shinyServer(function(input, output,session) {
                                                                        "Sandstone Heath"="Sandstone Heath",
                                                                        "Sandstone Woodland"="Sandstone Woodland",
                                                                        "Mangrove/Mud"="Mangrove/Mud",
-                                                                       "Water/Bare","Water/Bare"),
+                                                                       "Water/Bare"="Water/Bare",
+                                                                       "Treeless"="Treeless",
+                                                                       "Rocks"="Rocks"),
                       selected = overallVeg)
     updateSelectInput(session,"vegType3","Quadrat Veg Class",choices=c("Euc Open Forest"="Euc Open Forest",
                                                                        "Euc Woodland (Mafic)"="Euc Woodland (Mafic)",
@@ -69,7 +73,9 @@ shinyServer(function(input, output,session) {
                                                                        "Sandstone Heath"="Sandstone Heath",
                                                                        "Sandstone Woodland"="Sandstone Woodland",
                                                                        "Mangrove/Mud"="Mangrove/Mud",
-                                                                       "Water/Bare","Water/Bare"),
+                                                                       "Water/Bare"="Water/Bare",
+                                                                       "Treeless"="Treeless",
+                                                                       "Rocks"="Rocks"),
                       selected = overallVeg)
     updateSelectInput(session,"vegType4","Quadrat Veg Class",choices=c("Euc Open Forest"="Euc Open Forest",
                                                                        "Euc Woodland (Mafic)"="Euc Woodland (Mafic)",
@@ -77,7 +83,9 @@ shinyServer(function(input, output,session) {
                                                                        "Sandstone Heath"="Sandstone Heath",
                                                                        "Sandstone Woodland"="Sandstone Woodland",
                                                                        "Mangrove/Mud"="Mangrove/Mud",
-                                                                       "Water/Bare","Water/Bare"),
+                                                                       "Water/Bare"="Water/Bare",
+                                                                       "Treeless"="Treeless",
+                                                                       "Rocks"="Rocks"),
                       selected = overallVeg)
   })
   
@@ -90,6 +98,8 @@ shinyServer(function(input, output,session) {
       thisdt = thisdt[rep(seq_len(nrow(thisdt)), each=4),]
       # Add a sequence ID column
       thisdt$SqID = 1:4
+      
+      thisdt$drainage = rep(input$drainage,4)
       
       # Add a veg type column with the veg type information
       thisdt$vegType = c(input$vegType1,input$vegType2,input$vegType3,input$vegType4)
@@ -148,35 +158,45 @@ shinyServer(function(input, output,session) {
                                                                              "Sandstone Heath"="Sandstone Heath",
                                                                              "Sandstone Woodland"="Sandstone Woodland",
                                                                              "Mangrove/Mud"="Mangrove/Mud",
-                                                                             "Water/Bare","Water/Bare"))
+                                                                             "Water/Bare"="Water/Bare",
+                                                                             "Treeless"="Treeless",
+                                                                             "Rocks"="Rocks"))
     updateSelectInput(session,"vegType1","Quadrat Veg Class",choices=c("Euc Open Forest"="Euc Open Forest",
                                                                        "Euc Woodland (Mafic)"="Euc Woodland (Mafic)",
                                                                        "Euc Woodland (Sand)"="Euc Woodland (Sand)",
                                                                        "Sandstone Heath"="Sandstone Heath",
                                                                        "Sandstone Woodland"="Sandstone Woodland",
                                                                        "Mangrove/Mud"="Mangrove/Mud",
-                                                                       "Water/Bare","Water/Bare"))
+                                                                       "Water/Bare"="Water/Bare",
+                                                                       "Treeless"="Treeless",
+                                                                       "Rocks"="Rocks"))
     updateSelectInput(session,"vegType2","Quadrat Veg Class",choices=c("Euc Open Forest"="Euc Open Forest",
                                                                        "Euc Woodland (Mafic)"="Euc Woodland (Mafic)",
                                                                        "Euc Woodland (Sand)"="Euc Woodland (Sand)",
                                                                        "Sandstone Heath"="Sandstone Heath",
                                                                        "Sandstone Woodland"="Sandstone Woodland",
                                                                        "Mangrove/Mud"="Mangrove/Mud",
-                                                                       "Water/Bare","Water/Bare"))
+                                                                       "Water/Bare"="Water/Bare",
+                                                                       "Treeless"="Treeless",
+                                                                       "Rocks"="Rocks"))
     updateSelectInput(session,"vegType3","Quadrat Veg Class",choices=c("Euc Open Forest"="Euc Open Forest",
                                                                        "Euc Woodland (Mafic)"="Euc Woodland (Mafic)",
                                                                        "Euc Woodland (Sand)"="Euc Woodland (Sand)",
                                                                        "Sandstone Heath"="Sandstone Heath",
                                                                        "Sandstone Woodland"="Sandstone Woodland",
                                                                        "Mangrove/Mud"="Mangrove/Mud",
-                                                                       "Water/Bare","Water/Bare"))
+                                                                       "Water/Bare"="Water/Bare",
+                                                                       "Treeless"="Treeless",
+                                                                       "Rocks"="Rocks"))
     updateSelectInput(session,"vegType4","Quadrat Veg Class",choices=c("Euc Open Forest"="Euc Open Forest",
                                                                        "Euc Woodland (Mafic)"="Euc Woodland (Mafic)",
                                                                        "Euc Woodland (Sand)"="Euc Woodland (Sand)",
                                                                        "Sandstone Heath"="Sandstone Heath",
                                                                        "Sandstone Woodland"="Sandstone Woodland",
                                                                        "Mangrove/Mud"="Mangrove/Mud",
-                                                                       "Water/Bare","Water/Bare"))
+                                                                       "Water/Bare"="Water/Bare",
+                                                                       "Treeless"="Treeless",
+                                                                       "Rocks"="Rocks"))
     
     ### Update animals:
     updateTextInput(session,"cattle1","Cattle",value=0)
@@ -229,7 +249,8 @@ shinyServer(function(input, output,session) {
     print(data$thispt$PhotoLocation)
   })
   
-  
+  output$thisFilename <- renderText(data$thispt$PhotoLocation)
+  output$thisVegclass <- renderText(data$thispt$VegID)
   
   output$preImage <-  renderImage({
     print(paste0("D:\\",data$thispt$PhotoLocation))
